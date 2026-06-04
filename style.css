@@ -72,7 +72,7 @@ header p {
   transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
 
-.card h2 {
+.card h2, .feature-card h2 {
   margin: 0;
   color: #0c4f8a;
   font-size: 1.3rem;
@@ -83,13 +83,13 @@ header p {
   font-size: 1rem;
 }
 
-.card p {
+.card p, .feature-card p {
   margin: 0;
   text-align: left;
+  flex-grow: 1;
 }
 
-
-.card:hover {
+.card:hover, .feature-card:hover {
   transform: scale(1.03);
   box-shadow: 0 20px 32px rgba(0, 0, 0, 0.16);
 }
@@ -186,4 +186,57 @@ p {
     padding: 1rem;
   }
 }
+
+/* Feature Card Styling - matches timeline card design */
+.feature-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  height: 100%;
+}
+
+/* Newsletter Section Styling */
+.newsletter-section {
+  background: #f8f9fa;
+}
+
+.newsletter-section h2 {
+  color: #0c4f8a;
+  font-weight: 700;
+}
+
+.newsletter-section p {
+  text-align: center;
+  color: #666;
+}
+
+/* Footer Styling */
+.footer {
+  background: #0c4f8a;
+  color: white;
+  margin-top: auto;
+}
+
+.footer p {
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+/* Responsive footer on small screens */
+@media (max-width: 768px) {
+  .footer {
+    text-align: center;
+  }
+
+  .footer p {
+    text-align: center;
+  }
+}
+
 

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Intel: Sustainability Through the Ages</title>
+  <!-- Bootstrap CSS for responsive grid and RTL support -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -155,7 +157,157 @@
         </p>
       </div>
     </div>
+    </section>
+    <p>Scroll to view timeline | Hover over cards to learn more!</p>
+    
+    <!-- Three-Column Bootstrap Grid Section -->
+    <section class="features-section py-5">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Column 1: RISE Strategy -->
+          <div class="col-12 col-md-4">
+            <div class="feature-card">
+              <h2>RISE Strategy</h2>
+              <p>
+                Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy, 
+                Intel sets ambitious 2030 goals, including driving industry-wide 
+                progress on climate action, water stewardship, and waste reduction.
+              </p>
+              <!-- Learn More Button -->
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+
+          <!-- Column 2: Commitment -->
+          <div class="col-12 col-md-4">
+            <div class="feature-card">
+              <h2>Commitment</h2>
+              <p>
+                In 2022, Intel pledged to achieve net-zero greenhouse gas emissions 
+                (Scope 1 and 2) by 2040. This commitment builds on decades of 
+                environmental initiatives and partnerships across the semiconductor 
+                industry.
+              </p>
+              <!-- Learn More Button -->
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+
+          <!-- Column 3: Water &amp; Waste -->
+          <div class="col-12 col-md-4">
+            <div class="feature-card">
+              <h2>Water &amp; Waste</h2>
+              <p>
+                Intel conserves billions of gallons of water annually and 
+                collaborates with local communities to restore watersheds.
+                Intel also upcycles and recycles materials to reduce waste and 
+                advance a circular economy.
+              </p>
+              <!-- Learn More Button -->
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </section>
-  <p>Scroll to view timeline | Hover over cards to learn more!</p>
+
+  <!-- Newsletter Subscription Form -->
+  <section class="newsletter-section py-5">
+    <div class="container" style="max-width: 600px;">
+      <!-- Section heading -->
+      <h2 class="text-center mb-4">Subscribe to Our Newsletter</h2>
+      <p class="text-center mb-4">
+        Stay updated on Intel's latest sustainability initiatives and milestones.
+      </p>
+
+      <!-- Bootstrap Form -->
+      <form class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="nameInput" class="form-label">Full Name</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="nameInput" 
+            placeholder="Enter your full name" 
+            required />
+          <div class="invalid-feedback">
+            Please provide your full name.
+          </div>
+        </div>
+
+        <!-- Email Input Field -->
+        <div class="mb-3">
+          <label for="emailInput" class="form-label">Email Address</label>
+          <input 
+            type="email" 
+            class="form-control" 
+            id="emailInput" 
+            placeholder="Enter your email address" 
+            required />
+          <div class="invalid-feedback">
+            Please provide a valid email address.
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer mt-5 py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <p class="mb-2">2026 Intel Corporation. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const rtlLanguages = new Set([
+        'ar','he','fa','ur','ps','sd','ug','ku','yi','dv','azb','ckb','ku','mzn'
+      ]);
+
+      const html = document.documentElement;
+
+      function isRtlLanguage(code) {
+        if (!code) return false;
+        return rtlLanguages.has(code.split('-')[0].toLowerCase());
+      }
+
+      function updateDirection() {
+        const htmlClass = html.className || '';
+        if (htmlClass.includes('translated-rtl')) {
+          html.dir = 'rtl';
+          return;
+        }
+        if (htmlClass.includes('translated-ltr')) {
+          html.dir = 'ltr';
+          return;
+        }
+
+        const langValue = html.getAttribute('lang') || html.lang || '';
+        html.dir = isRtlLanguage(langValue) ? 'rtl' : 'ltr';
+      }
+
+      const observer = new MutationObserver(() => updateDirection());
+      observer.observe(html, { attributes: true, attributeFilter: ['lang', 'dir', 'class'] });
+
+      if (document.body) {
+        const bodyObserver = new MutationObserver(() => updateDirection());
+        bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+      }
+
+      updateDirection();
+
+      setInterval(updateDirection, 1000);
+    })();
+  </script>
 </body>
 </html>
