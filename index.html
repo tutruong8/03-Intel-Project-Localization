@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,7 +14,7 @@
   <header>
     <div>
       <!-- Ask Copilot to teach you about `.svg`. 🙂 You'll need to resize the logo with CSS. -->
-      <img src="img/intel-header-logo.svg" alt="Intel Logo" />
+      <img src="img/intel-header-logo.svg" alt="Intel Logo" loading="lazy" width="220" height="100" />
       <!-- Main Heading -->
       <h1>
         Sustainability Through the Ages
@@ -35,7 +35,7 @@
     <!-- Card 1: 1968 -->
     <div class="card">
       <div class="card-year">1968</div>
-      <img class="card-image" src="img/1. Intel Founded.png" alt="Intel Founded" />
+      <img class="card-image" src="img/1. Intel Founded.jpg" alt="Intel Founded" loading="lazy" width="320" height="240" />
       <div class="card-content">
         <h3>Intel Founded</h3>
         <p>
@@ -49,7 +49,7 @@
     <!-- Card 2: 1971 -->
     <div class="card">
       <div class="card-year">1971</div>
-      <img class="card-image" src="img/2. Intel 4004.png" alt="Intel 4004 microprocessor" />
+      <img class="card-image" src="img/2. Intel 4004.jpg" alt="Intel 4004 microprocessor" loading="lazy" width="320" height="240" />
       <div class="card-content">
         <h3>First Microprocessor</h3>
         <p>
@@ -63,7 +63,7 @@
     <!-- Card 3: 1978 -->
     <div class="card">
       <div class="card-year">1978</div>
-      <img class="card-image" src="img/3. Intel 8086.png" alt="Intel 8086 processor" />
+      <img class="card-image" src="img/3. Intel 8086.jpg" alt="Intel 8086 processor" loading="lazy" width="320" height="240" />
       <div class="card-content">
         <h3>8086 Processor</h3>
         <p>
@@ -76,7 +76,7 @@
     <!-- Card 4: 1985 -->
     <div class="card">
       <div class="card-year">1985</div>
-      <img class="card-image" src="img/4. 386.png" alt="Intel 386 processor" />
+      <img class="card-image" src="img/4. 386.jpg" alt="Intel 386 processor" loading="lazy" width="320" height="240" />
       <div class="card-content">
         <h3>386 Processor</h3>
         <p>
@@ -90,7 +90,7 @@
     <!-- Card 5: 2006 -->
     <div class="card">
       <div class="card-year">2006</div>
-      <img class="card-image" src="img/5. Emissions.png" alt="Greenhouse gas emissions" />
+      <img class="card-image" src="img/5. Emissions.jpg" alt="Greenhouse gas emissions" loading="lazy" width="320" height="240" />
       <div class="card-content">
         <h3>Peak GHG Emissions</h3>
         <p>
@@ -105,7 +105,7 @@
     <!-- Card 6: 2020 -->
     <div class="card">
       <div class="card-year">2020</div>
-      <img class="card-image" src="img/6. Rise.png" alt="Intel RISE strategy" />
+      <img class="card-image" src="img/6. Rise.jpg" alt="Intel RISE strategy" loading="lazy" width="320" height="240" />
       <div class="card-content">
         <h3>RISE Strategy</h3>
         <p>
@@ -119,7 +119,7 @@
     <!-- Card 7: 2022 -->
     <div class="card">
       <div class="card-year">2022</div>
-      <img class="card-image" src="img/7. Net-Zero.png" alt="Net-zero commitment" />
+      <img class="card-image" src="img/7. Net-Zero.jpg" alt="Net-zero commitment" loading="lazy" width="320" height="240" />
       <div class="card-content">
         <h3>Net-Zero By 2040</h3>
         <p>
@@ -133,7 +133,7 @@
     <!-- Card 8: 2023 -->
     <div class="card">
       <div class="card-year">2023</div>
-      <img class="card-image" src="img/8. Renewable Electricity.png" alt="Renewable electricity" />
+      <img class="card-image" src="img/8. Renewable Electricity.jpg" alt="Renewable electricity" loading="lazy" width="320" height="240" />
       <div class="card-content">
         <h3>Renewable Electricity</h3>
         <p>
@@ -147,7 +147,7 @@
     <!-- Card 9: 2024 -->
     <div class="card">
       <div class="card-year">2024</div>
-      <img class="card-image" src="img/9. Sustainability Submit.png" alt="Sustainability Summit" />
+      <img class="card-image" src="img/9. Sustainability Submit.jpg" alt="Sustainability Summit" loading="lazy" width="320" height="240" />
       <div class="card-content">
         <h3>Sustainability Summit</h3>
         <p>
@@ -268,46 +268,48 @@
     </div>
   </footer>
 
+  <!-- Google Translate RTL Detection Script -->
   <script>
-    (function () {
-      const rtlLanguages = new Set([
-        'ar','he','fa','ur','ps','sd','ug','ku','yi','dv','azb','ckb','ku','mzn'
-      ]);
-
-      const html = document.documentElement;
-
-      function isRtlLanguage(code) {
-        if (!code) return false;
-        return rtlLanguages.has(code.split('-')[0].toLowerCase());
-      }
-
-      function updateDirection() {
-        const htmlClass = html.className || '';
-        if (htmlClass.includes('translated-rtl')) {
-          html.dir = 'rtl';
-          return;
+    // List of right-to-left language codes
+    const rtlLanguages = ['ar', 'he', 'fa', 'ur', 'ug', 'nqo', 'ps', 'sd', 'yi'];
+    
+    // Function to get the current language
+    function getCurrentLanguage() {
+      // Check Google Translate's language attribute
+      const htmlLang = document.documentElement.lang || 'en';
+      return htmlLang.split('-')[0].toLowerCase();
+    }
+    
+    // Function to update page direction based on language
+    function updatePageDirection() {
+      const currentLang = getCurrentLanguage();
+      const isRTL = rtlLanguages.includes(currentLang);
+      document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+    }
+    
+    // Update direction on page load
+    updatePageDirection();
+    
+    // Watch for Google Translate changes via MutationObserver
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'lang') {
+          updatePageDirection();
         }
-        if (htmlClass.includes('translated-ltr')) {
-          html.dir = 'ltr';
-          return;
-        }
-
-        const langValue = html.getAttribute('lang') || html.lang || '';
-        html.dir = isRtlLanguage(langValue) ? 'rtl' : 'ltr';
-      }
-
-      const observer = new MutationObserver(() => updateDirection());
-      observer.observe(html, { attributes: true, attributeFilter: ['lang', 'dir', 'class'] });
-
-      if (document.body) {
-        const bodyObserver = new MutationObserver(() => updateDirection());
-        bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-      }
-
-      updateDirection();
-
-      setInterval(updateDirection, 1000);
-    })();
+      });
+    });
+    
+    // Observe the html element for lang attribute changes
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['lang']
+    });
+    
+    // Also check periodically for translation changes
+    window.addEventListener('load', function() {
+      setInterval(updatePageDirection, 500);
+    });
   </script>
+
 </body>
 </html>
